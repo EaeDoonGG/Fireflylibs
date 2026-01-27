@@ -1,9 +1,11 @@
 <template>
   <div class="notice-wrapper">
     <div class="notice-card">
-      <div class="logo-container">
-        <img :src="imgLogo" alt="Firefly Logo" class="client-logo" />
-      </div>
+      <a href="https://fireflyclient.com/" target="_blank" class="logo-link">
+        <div class="logo-container">
+          <img :src="imgLogo" alt="Firefly Logo" class="client-logo" />
+        </div>
+      </a>
 
       <div class="badge-container">
         <span class="badge">Vaga Disponível</span>
@@ -30,13 +32,22 @@
         <div class="systems-container">
           <img :src="imgSistemas" alt="OS Support" class="systems-img" />
         </div>
+
+        <div class="official-links">
+          <a href="https://discord.com/invite/firefly" target="_blank" class="link-item discord">
+            <span class="icon">💬</span> Discord Oficial
+          </a>
+          <span class="separator">|</span>
+          <a href="https://fireflyclient.com/" target="_blank" class="link-item site">
+            <span class="icon">🌐</span> Website
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-// Importando direto da base (raiz do projeto)
 import imgLogo from './dsd.png';
 import imgVagas from './vagas_abertas.png';
 import imgSistemas from './sistemas.png';
@@ -65,27 +76,24 @@ import imgSistemas from './sistemas.png';
   border-radius: 32px;
   padding: 4rem 2.5rem;
   text-align: center;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
 }
 
 /* --- EFEITOS NAS IMAGENS --- */
 
-/* 1. Logo: Aumenta o brilho e cresce levemente */
 .client-logo {
   width: 100px;
   filter: drop-shadow(0 0 10px rgba(0, 255, 149, 0.4));
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
 }
 
-.client-logo:hover {
-  transform: scale(1.1) rotate(5deg);
+.logo-link:hover .client-logo {
+  transform: scale(1.1) rotate(-3deg);
   filter: drop-shadow(0 0 25px rgba(0, 255, 149, 0.8));
 }
 
-/* 2. Banner: Efeito de "Lift" e claridade */
 .promo-banner {
   width: 100%;
   border-radius: 18px;
@@ -95,29 +103,25 @@ import imgSistemas from './sistemas.png';
 }
 
 .promo-banner:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 255, 149, 0.1);
-  filter: brightness(1.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 149, 0.1);
+  filter: brightness(1.05);
 }
 
-/* 3. Sistemas: Flutuação suave */
 .systems-img {
-  max-width: 280px;
-  width: 70%;
+  max-width: 260px;
+  width: 65%;
   transition: all 0.4s ease;
-  opacity: 0.7;
+  opacity: 0.6;
+  margin-bottom: 2rem;
 }
 
 .systems-img:hover {
   opacity: 1;
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+  transform: scale(1.03);
 }
 
-/* --- ESTILIZAÇÃO GERAL --- */
-
-.logo-container { margin-bottom: 1rem; }
-.badge-container { margin-bottom: 1.5rem; }
+/* --- ESTILIZAÇÃO GERAL E LINKS --- */
 
 .badge {
   display: inline-block;
@@ -129,6 +133,7 @@ import imgSistemas from './sistemas.png';
   font-weight: 800;
   color: #5dffb3;
   text-transform: uppercase;
+  margin-bottom: 1.5rem;
 }
 
 h1 {
@@ -143,11 +148,33 @@ h1 {
   font-weight: 700;
 }
 
+.intro-text { margin-bottom: 2.5rem; }
 .banner-container { margin-bottom: 2.5rem; }
+.footer-text { color: #a8e6c2; margin-bottom: 2rem; font-size: 0.95rem; }
 
-.footer-text {
-  color: #a8e6c2;
-  font-size: 0.95rem;
-  margin-bottom: 2rem;
+.official-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 1rem;
+}
+
+.link-item {
+  color: #5dffb3;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: 0.3s;
+  opacity: 0.8;
+}
+
+.link-item:hover {
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(93, 255, 179, 0.5);
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.1);
 }
 </style>
