@@ -1,69 +1,49 @@
 <template>
   <div class="notice-wrapper">
     <div class="notice-card">
-      <img :src="imgLogo" alt="Firefly Logo" class="client-logo" />
+      <div class="logo-container">
+        <img :src="imgLogo" alt="Firefly Logo" class="client-logo" />
+      </div>
 
-      <span class="badge">Vaga Disponível</span>
+      <div class="badge-container">
+        <span class="badge">Vaga Disponível</span>
+      </div>
 
       <h1>Firefly Client</h1>
 
       <div class="content-body">
-        <p>
-          Uma nova experiência para Minecraft, focada em
-          <strong>performance extrema</strong>, visual moderno
-          e estabilidade total.
+        <p class="intro-text">
+          Uma nova experiência para Minecraft, focada em 
+          <span class="highlight">performance extrema</span>, 
+          visual moderno e estabilidade total.
         </p>
 
         <div class="banner-container">
-          <img :src="imgVagas" alt="Recrutamento" class="promo-banner" />
+          <img :src="imgVagas" alt="Estamos Recrutando" class="promo-banner" />
         </div>
 
-        <p>
-          Desenvolvido com atenção aos mínimos detalhes,
-          o Firefly Client entrega fluidez, segurança e um
-          design elegante em cada atualização.
+        <p class="footer-text">
+          Desenvolvido com atenção aos mínimos detalhes, o Firefly Client 
+          entrega fluidez, segurança e um design elegante em cada atualização.
         </p>
 
         <div class="systems-container">
-          <img :src="imgSistemas" alt="Sistemas Operacionais" class="systems-img" />
+          <img :src="imgSistemas" alt="OS Support" class="systems-img" />
         </div>
-
-        <p class="discord-info">
-          Entre na nossa comunidade no Discord:
-          <a href="https://discord.gg/firefly" target="_blank">Firefly Official</a>
-        </p>
       </div>
-
-      <button @click="handleDownload" class="download-button">
-        BAIXAR FIREFLY.JAR
-      </button>
     </div>
   </div>
 </template>
 
 <script setup>
-/** * Como as imagens estão na raiz (onde está o package.json), 
- * usamos o caminho relativo './' para importá-las.
- */
+// Importando direto da base (raiz do projeto)
 import imgLogo from './dsd.png';
 import imgVagas from './vagas_abertas.png';
 import imgSistemas from './sistemas.png';
-
-const handleDownload = () => {
-  // Se o jar também estiver na raiz, ele precisará estar na pasta 'public'
-  // para ser baixável diretamente, ou você deve importar o link dele aqui.
-  const jarUrl = '/firefly-client.jar'; 
-  const link = document.createElement('a');
-  link.href = jarUrl;
-  link.setAttribute('download', 'FireflyClient.jar');
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 .notice-wrapper {
   min-height: 100vh;
@@ -71,111 +51,103 @@ const handleDownload = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 40px 20px;
   font-family: 'Inter', sans-serif;
-  background: 
-    radial-gradient(circle at 80% 20%, rgba(93, 255, 179, 0.08), transparent 45%),
-    linear-gradient(180deg, #07110b 0%, #020403 100%);
+  background-color: #020403;
   color: #ecfff4;
 }
 
 .notice-card {
-  width: min(580px, 100%);
-  background: rgba(6, 20, 14, 0.8);
-  border: 1px solid rgba(93, 255, 179, 0.18);
-  border-radius: 28px;
-  padding: 3.5rem 2.5rem;
+  width: 100%;
+  max-width: 540px;
+  background: rgba(7, 17, 11, 0.45);
+  border: 1px solid rgba(93, 255, 179, 0.15);
+  border-radius: 32px;
+  padding: 4rem 2.5rem;
   text-align: center;
-  backdrop-filter: blur(25px) saturate(170%);
-  -webkit-backdrop-filter: blur(25px) saturate(170%);
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(93, 255, 179, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
 }
 
+/* --- EFEITOS NAS IMAGENS --- */
+
+/* 1. Logo: Aumenta o brilho e cresce levemente */
 .client-logo {
-  width: 80px;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 12px rgba(93, 255, 179, 0.4));
+  width: 100px;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 149, 0.4));
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
 }
 
-.badge {
-  display: inline-block;
-  padding: 0.4rem 1.1rem;
-  border-radius: 50px;
-  background: rgba(93, 255, 179, 0.12);
-  border: 1px solid rgba(93, 255, 179, 0.45);
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #5dffb3;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 15px rgba(93, 255, 179, 0.1);
+.client-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 0 25px rgba(0, 255, 149, 0.8));
 }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(180deg, #ffffff 0%, #a8e6c2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.content-body p {
-  color: #a8e6c2;
-  line-height: 1.7;
-  margin-bottom: 1.2rem;
-}
-
-strong {
-  color: #5dffb3;
-}
-
+/* 2. Banner: Efeito de "Lift" e claridade */
 .promo-banner {
   width: 100%;
-  border-radius: 14px;
-  margin: 1rem 0;
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.systems-img {
-  width: 90%;
-  max-width: 380px;
-  margin: 1rem 0;
-}
-
-.download-button {
-  margin-top: 1.5rem;
-  width: 100%;
-  padding: 1.2rem;
-  background: #00ff95;
-  color: #030a06;
-  border: none;
-  border-radius: 14px;
-  font-size: 1.1rem;
-  font-weight: 800;
+  transition: all 0.5s ease;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 255, 149, 0.3);
-  text-transform: uppercase;
 }
 
-.download-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 40px rgba(0, 255, 149, 0.5);
+.promo-banner:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 255, 149, 0.1);
   filter: brightness(1.1);
 }
 
-.discord-info {
-  margin-top: 1rem;
-  font-size: 0.9rem !important;
+/* 3. Sistemas: Flutuação suave */
+.systems-img {
+  max-width: 280px;
+  width: 70%;
+  transition: all 0.4s ease;
+  opacity: 0.7;
 }
 
-a {
+.systems-img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+
+/* --- ESTILIZAÇÃO GERAL --- */
+
+.logo-container { margin-bottom: 1rem; }
+.badge-container { margin-bottom: 1.5rem; }
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 255, 149, 0.4);
+  background: rgba(0, 255, 149, 0.05);
+  font-size: 11px;
+  font-weight: 800;
   color: #5dffb3;
-  text-decoration: none;
-  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.highlight {
+  color: #00ff95;
+  font-weight: 700;
+}
+
+.banner-container { margin-bottom: 2.5rem; }
+
+.footer-text {
+  color: #a8e6c2;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
 }
 </style>
