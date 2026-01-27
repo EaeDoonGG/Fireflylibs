@@ -4,10 +4,10 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   app: {
     head: {
-      title: "Shindo Client CDN",
+      title: "Firefly Client Downloads",
       htmlAttrs: { lang: "pt-BR" },
       meta: [
-        { name: "description", content: "Infraestrutura CDN oficial para distribui��o do Shindo Client." },
+        { name: "description", content: "......" },
         { name: "robots", content: "noindex, nofollow" },
         { name: "theme-color", content: "#8539ff" }
       ],
