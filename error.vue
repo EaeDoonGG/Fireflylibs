@@ -1,9 +1,12 @@
 <template>
   <div class="error-page">
     <div class="error-card">
-      <span class="badge">Erro {{ error?.statusCode || 404 }}</span>
-      <h1>Conteúdo não encontrado</h1>
-      <p>O endpoint solicitado não existe nesta CDN.</p>
+      <span class="badge">404</span>
+      <h1>You seem to be lost</h1>
+      <p>
+        The page you’re looking for doesn’t exist.<br />
+        This path leads nowhere.
+      </p>
     </div>
   </div>
 </template>
