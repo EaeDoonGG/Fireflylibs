@@ -2,9 +2,9 @@
   <div class="error-page">
     <div class="error-card">
       <span class="badge">404</span>
-      <h1>You seem to be lost</h1>
+      <h1>Looks like you got lost</h1>
       <p>
-        The page you’re looking for doesn’t exist.<br />
+        The page you are looking for does not exist.<br />
         This path leads nowhere.
       </p>
     </div>
